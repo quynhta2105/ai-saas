@@ -46,7 +46,6 @@ const ConversationPage = () => {
                 response: response.data
             }
             setMessages((current) => [...current, data]);
-            console.log(messages)
             form.reset();
 
         } catch (error) {
