@@ -14,7 +14,6 @@ export async function POST(req: Request) {
         const imageUrl = `https://image.pollinations.ai/prompt/${messages}`;
 
         const result = await fetch(imageUrl);
-        console.log(result);
         return NextResponse.json(result)
     } catch (error) {
         console.log("[ERROR]", error)
