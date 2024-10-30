@@ -1,7 +1,6 @@
 "use client"
 
 import * as z from 'zod';
-import axios from 'axios'
 import Heading from '@/components/heading'
 import { MessageSquare } from 'lucide-react'
 import React, { useState } from 'react'
@@ -13,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Empty } from '@/components/empty';
 import { Loader } from '@/components/loader';
-import Image from 'next/image';
 
 interface ImageState {
     data: string | Blob | null; // State variable to hold image data
