@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { cn } from '@/lib/utils';
 
-import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react";
+import { LayoutDashboard, MessageSquare } from "lucide-react";
 import { usePathname } from 'next/navigation';
 
 const sidebarLinks = [
@@ -20,36 +20,7 @@ const sidebarLinks = [
         icon: MessageSquare,
         href: '/conversation',
         color: 'text-violet-500'
-    },
-    {
-        label: "Image Generation",
-        icon: ImageIcon,
-        href: '/image',
-        color: 'text-pink-700'
-    },
-    {
-        label: "Video Generation",
-        icon: VideoIcon,
-        href: '/video',
-        color: 'text-orange-700'
-    },
-    {
-        label: "Music Generation",
-        icon: Music,
-        href: '/music',
-        color: 'text-emeral-700'
-    },
-    {
-        label: "Code Generation",
-        icon: Code,
-        href: '/code',
-        color: 'text-green-700'
-    },
-    {
-        label: "Settings",
-        icon: Settings,
-        href: '/settings',
-    },
+    }
 ]
 
 
