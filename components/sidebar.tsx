@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 import { LayoutDashboard, MessageSquare } from "lucide-react";
 import { usePathname } from 'next/navigation';
+import { FreeCounter } from './free-counter';
 
 const sidebarLinks = [
     {
@@ -23,8 +24,11 @@ const sidebarLinks = [
     }
 ]
 
+interface SidebarProps {
+    apiLimtCount: number;
+}
 
-const Sidebar = () => {
+const Sidebar = ({ apiLimtCount = 0 } : SidebarProps) => {
     const pathname = usePathname();
   return (
     <div className='space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white'>
@@ -54,6 +58,9 @@ const Sidebar = () => {
                 })}
             </div>
         </div>
+        <FreeCounter
+            apiLimtCount={apiLimtCount}
+        />
     </div>
   )
 }
