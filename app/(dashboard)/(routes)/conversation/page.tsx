@@ -16,13 +16,21 @@ import { Empty } from '@/components/empty';
 import { Loader } from '@/components/loader';
 import { UserAvatar } from '@/components/user-avatar';
 import { BotAvatar } from '@/components/bot-avatar';
+import { useProModal } from '@/hooks/use-pro-modal';
+import toast from 'react-hot-toast';
 
 interface MessageRequest {
     message: string;
     response: string;
 }
+interface CustomError {
+    response?: {
+        status?: number;
+    };
+}
 
 const ConversationPage = () => {
+    const proModal = useProModal();
     const router = useRouter();
     const [messages, setMessages] = useState<MessageRequest[]>([]);
     const form = useForm<z.infer<typeof formSchema>>({
@@ -48,8 +56,13 @@ const ConversationPage = () => {
             setMessages((current) => [...current, data]);
             form.reset();
 
-        } catch (error) {
-            //TODO: Open Pro Modal
+        } catch (error: unknown) {
+            const typedError = error as CustomError;
+            if (typedError.response?.status === 403) {
+                proModal.onOpen();
+            } else {
+                toast.error("Someting went wrong")
+            }
             console.log(error)
         } finally {
             router.refresh();

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { cn } from '@/lib/utils';
 
-import { LayoutDashboard, MessageSquare } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Settings } from "lucide-react";
 import { usePathname } from 'next/navigation';
 import { FreeCounter } from './free-counter';
 
@@ -21,14 +21,20 @@ const sidebarLinks = [
         icon: MessageSquare,
         href: '/conversation',
         color: 'text-violet-500'
-    }
+    },
+    {
+        label: "Settings",
+        icon: Settings,
+        href: '/settings',
+    },
 ]
 
 interface SidebarProps {
     apiLimtCount: number;
+    isPro: boolean;
 }
 
-const Sidebar = ({ apiLimtCount = 0 } : SidebarProps) => {
+const Sidebar = ({ apiLimtCount = 0, isPro = false } : SidebarProps) => {
     const pathname = usePathname();
   return (
     <div className='space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white'>
@@ -59,6 +65,7 @@ const Sidebar = ({ apiLimtCount = 0 } : SidebarProps) => {
             </div>
         </div>
         <FreeCounter
+            isPro={isPro}
             apiLimtCount={apiLimtCount}
         />
     </div>
