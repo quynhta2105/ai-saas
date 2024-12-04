@@ -146,4 +146,4 @@ const ConversationPage = () => {
   )
 }
 
-export default ConversationPage
+export default ConversationPage;
